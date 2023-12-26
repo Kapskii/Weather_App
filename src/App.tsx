@@ -1,6 +1,8 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import { Tablo } from "./components/Tablo";
+import { SearchForm } from "./components/Search/SearchForm";
 
 export const App = () => {
   const [temp, setTemp] = useState(1000);
@@ -16,9 +18,10 @@ export const App = () => {
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsButtonClicked(true)
+    
   };
 
-  const getWeatherIconUrl = (icon: string) => {
+  const getWeatherIcon = (icon: string) => {
     return `https://openweathermap.org/img/wn/${icon}@2x.png`;
   };
 
@@ -34,25 +37,17 @@ export const App = () => {
         const feelsLike = Math.round(response.data.main.feels_like);
         setFeelsLike(feelsLike)
         const iconAddres = response.data.weather[0].icon;
-        console.log(iconAddres);
         setIcon(iconAddres)
-        
       })
       .catch(function (error) {
         console.log(error);
       });
-  },[isButtonClicked && inputValue !== '']);
+  },[isButtonClicked]);
 
   return (
-    <div className="App">
-      <form onSubmit={handleSubmit}>
-        <input value={inputValue} onChange={handleChange} />
-        <button type="submit">get temperature</button>
-      </form>
-      <img src={getWeatherIconUrl(icon)} alt="Weather Icon" />
-      <h1>{temp !== 1000 ? `${temp}°C` : "Loading..."}</h1>
-      <p>{feelsLike !== 1000 ?`Ощущаяется как ${feelsLike}°C` : 'Loading...' }</p>
-
+    <div className="app">
+      <SearchForm submit={handleSubmit} inputValue={inputValue} change={handleChange}/>
+      <Tablo getIcon={getWeatherIcon} icon={icon} temperature={temp} feelsLike={feelsLike}/>
     </div>
   );
 };
