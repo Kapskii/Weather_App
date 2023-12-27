@@ -9,7 +9,7 @@ type PropsType = {
 export const Input = (props: PropsType) => {
     return (
         <>
-        <input className={s.input} value={props.value} onChange={props.onChange} />
+        <input className={s.input} value={props.value} onChange={props.onChange} placeholder="Введите название города..." />
         </>
     )
 }

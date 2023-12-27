@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(20, 20, 20);
+    background: linear-gradient(#a619f8, #00f2fe) fixed;
     max-width: 1440px;
     height: 100vh;
     display: flex;
