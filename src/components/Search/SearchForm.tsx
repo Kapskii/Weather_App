@@ -12,7 +12,7 @@ export const SearchForm = (props: PropsType) => {
   return ( 
       <form className={s.form} onSubmit={props.submit}>
         <Input value={props.inputValue} onChange={props.change} />
-        <button className={s.buttonSearch} type="submit">Поиск</button>
+        <button className={s.buttonSearch} type="submit" disabled={!props.inputValue}>Поиск</button>
       </form>
   );
 };

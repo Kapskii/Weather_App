@@ -1,22 +1,21 @@
+import { memo } from "react";
+import { WeatherType } from "../App";
 import s from "./tablo.module.css";
 
 type PropsType = {
-  getIcon: (icon: string) => string | undefined;
-  icon: string;
-  temperature: number;
-  feelsLike: number;
-  cityName: string;
+  weather: WeatherType
 };
 
-export const Tablo = (props: PropsType) => {
+export const Tablo = memo((props: PropsType) => {
+    const {city, temp, icon, feelsLike} = props.weather;
   return (
     <div className={s.tabloWrapper}>
-      <h1>{props.cityName}</h1>
+      <h1>{city}</h1>
       <div className={s.weatherWpapper}>
-        <img className={s.weatherIcon} src={props.getIcon(props.icon)} alt="Weather Icon" />
-        <h2 className={s.weatherTitle}> {props.temperature !== 1000 ? `${props.temperature}°C` : "Loading..."}</h2>
+        <img className={s.weatherIcon} src={icon} alt="Weather Icon" />
+        <h2 className={s.weatherTitle}> {temp !== undefined  ? `${temp}°C` : "Loading..."}</h2>
       </div>
-      <p>{props.feelsLike !== 1000 ? `Ощущаяется как ${props.feelsLike}°C` : "Loading..."} </p>
+      <p>{feelsLike ? `Ощущается как ${feelsLike}°C` : "Loading..."} </p>
     </div>
   );
-};
+});

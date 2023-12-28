@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import s from './input.module.css'
 
 type PropsType = {
-  value: string;
+  value: string; 
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
