@@ -14,7 +14,7 @@ export type WeatherType = {
 
 export const App = () => {
   
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("Минск");
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [weather, setWeather] = useState<WeatherType>({} as WeatherType)
 
