@@ -14,3 +14,10 @@
     height: 500px;
     padding: 50px;
 }
+
+@media (max-width: 430px) {
+    .app {
+        width: 70vw;
+        height: 86vh;
+    }
+}
