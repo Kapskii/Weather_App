@@ -1,10 +1,8 @@
 body {
-    background: linear-gradient(#a619f8, #00f2fe) fixed;
-    max-width: 1440px;
+    background: linear-gradient(#1b293e, #061426) fixed;
+    width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
 }
