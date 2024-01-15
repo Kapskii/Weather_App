@@ -1,9 +1,9 @@
 import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import "./App.css";
-import { Tablo } from "./components/Tablo";
+import { Tablo } from "./components/Tablo/Tablo";
 import { SearchForm } from "./components/Search/SearchForm";
 import { weatherAPI } from "./api/weatherAPI";
-import { HourlyWeather } from "./components/HourlyWeather";
+// import { HourlyWeather } from "./components/HourlyWeather";
 
 export type WeatherType = {
   city: string;
@@ -16,7 +16,7 @@ export const App = () => {
   const [inputValue, setInputValue] = useState("Минск");
   const [isButtonClicked, setIsButtonClicked] = useState(false);
   const [weather, setWeather] = useState<WeatherType>({} as WeatherType);
-  const [tempHour, setTempHour] = useState<any[]>([]);
+  // const [tempHour, setTempHour] = useState<any[]>([]);
 
   // console.log(tempHour);
 
@@ -46,37 +46,36 @@ export const App = () => {
       weatherAPI
         .getWeather(inputValue)
         .then(function ({ data }) {
-          // console.log(data);
-          
           const city = data.name;
           const temp = Math.round(data.main.temp);
           const feelsLike = Math.round(data.main.feels_like);
           const icon = getWeatherIcon(data.weather[0].icon);
-
           setWeather({ city, temp, feelsLike, icon });
           setInputValue("");
         })
-
         .catch(function (e) {
           alert(e.message);
         });
-      weatherAPI.getHourly(inputValue).then(function ({ data }) {
-        // console.log(data.list);
-        setTempHour(data.list);
-      });
+      // weatherAPI.getHourly(inputValue).then(function ({ data }) {
+      //   setTempHour(data.list);
+      // });
     }
   }, [isButtonClicked]);
 
   return (
     <div className="app">
       <div className="searchWrapper">
-        <SearchForm submit={handleSubmit} inputValue={inputValue} change={handleChange}/>
+        <SearchForm
+          submit={handleSubmit}
+          inputValue={inputValue}
+          change={handleChange}
+        />
       </div>
       <div className="weatherBlock">
-      <div className="weatherWrapper">
-        <Tablo weather={weather} />
-      </div>
-      {/* <div className="hourlyWeaterWrapper">
+        <div className="weatherWrapper">
+          <Tablo weather={weather} />
+        </div>
+        {/* <div className="hourlyWeaterWrapper">
         {tempHour.map((el, index) => (
           <HourlyWeather key={index} hWeather={el.main.temp} date={el.dt_txt} />
         ))}

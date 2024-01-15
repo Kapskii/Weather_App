@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { WeatherType } from "../App";
+import { WeatherType } from "../../App";
 import s from "./tablo.module.css";
 
 type PropsType = {
