@@ -7,7 +7,7 @@ type PropsType = {
 };
 
 export const Tablo = memo((props: PropsType) => {
-    const {city, temp, feelsLike, country, weatherDescription} = props.weather;
+    const {city, temp, country} = props.weather;
   return (
     <div className={s.tabloWrapper}>
       <h1 className={s.weatherCity}>{city}, {country}</h1>
