@@ -17,6 +17,7 @@ export const App = () => {
 
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
     setInputValue(event.target.value);
     setIsButtonClicked(false);
   };
@@ -40,7 +41,7 @@ export const App = () => {
       weatherAPI
         .getWeather(inputValue)
         .then(function ({ data }) {
-          console.log(data);
+          // console.log(data);
 
           const city = data.name;
           const temp = Math.round(data.main.temp);
