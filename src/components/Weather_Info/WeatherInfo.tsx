@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { WeatherType } from "../../App";
 import s from "./weatherInfo.module.css";
+import { WeatherType } from "../../common/types/types";
 
 type PropsType = {
   weather: WeatherType;

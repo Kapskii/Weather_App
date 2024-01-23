@@ -4,28 +4,23 @@ import { Tablo } from "./components/Tablo/Tablo";
 import { SearchForm } from "./components/Search/SearchForm";
 import { weatherAPI } from "./api/weatherAPI";
 import { WeatherInfo } from "./components/Weather_Info/WeatherInfo";
+import { WeatherType } from "./common/types/types";
+import { getWeatherIcon } from "./common/utils/getWeatherIcon";
 
-export type WeatherType = {
-  city: string;
-  temp: number;
-  feelsLike: number;
-  icon: string;
-  humidity?: number;
-  country?: string;
-  weatherDescription?: string;
-  maxTemp: number;
-  minTemp: number;
-};
+
 
 export const App = () => {
   const [inputValue, setInputValue] = useState("Минск");
   const [isButtonClicked, setIsButtonClicked] = useState(false);
+
   const [weather, setWeather] = useState<WeatherType>({} as WeatherType);
+
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
     setIsButtonClicked(false);
   };
+
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -33,9 +28,6 @@ export const App = () => {
     localStorage.setItem("cityName", inputValue);
   };
 
-  const getWeatherIcon = (icon: string) => {
-    return icon && `https://openweathermap.org/img/wn/${icon}@2x.png`;
-  };
 
   useEffect(() => {
     const initialCity = localStorage.getItem("cityName");
@@ -78,7 +70,7 @@ export const App = () => {
         });
     }
   }, [isButtonClicked]);
-  console.log(weather);
+
 
   return (
     <div className="app">
@@ -96,3 +88,4 @@ export const App = () => {
     </div>
   );
 };
+
