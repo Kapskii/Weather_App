@@ -1,4 +1,4 @@
-import React, { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import "./App.css";
 import { Tablo } from "./components/Tablo/Tablo";
 import { SearchForm } from "./components/Search/SearchForm";

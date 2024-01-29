@@ -1,15 +1,27 @@
-import { ChangeEvent } from "react";
-import s from './input.module.css'
+import { ChangeEvent, useEffect, useState } from "react";
+import s from "./input.module.css";
 
 type PropsType = {
-  value: string; 
+  value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const Input = (props: PropsType) => {
-    return (
-        <>
-        <input className={s.input} value={props.value} onChange={props.onChange} placeholder="Введите название города..." />
-        </>
-    )
-}
+  const [inputValue, setInputValue] = useState(props.value);
+
+  useEffect(() => {
+    setInputValue(props.value);
+  }, [props.value]);
+
+  return (
+    <>
+      <input
+        className={s.input}
+        value={inputValue}
+        onFocus={() => setInputValue("")}
+        onChange={props.onChange}
+        placeholder="Введите название города..."
+      />
+    </>
+  );
+};

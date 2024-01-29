@@ -10,7 +10,8 @@ export const Tablo = () => {
     
   return (
     <div className={s.tabloWrapper}>
-      <h1 className={s.weatherCity}>{city}, {country}</h1>
+      <h2 className={s.weatherCity}>{city}</h2>
+      <span className={s.weatherCity}>{country}</span>
       <div className={s.weatherWpapper}>
         <h2 className={s.weatherTitle}> {temp !== undefined  ? `${temp}°C` : "Загрузка..."}</h2>
       </div>

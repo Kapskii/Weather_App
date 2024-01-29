@@ -2,7 +2,6 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { WeatherType } from "../common/types/types";
 import { weatherAPI } from "../api/weatherAPI";
 import { getWeatherIcon } from "../common/utils/getWeatherIcon";
-import { State } from "country-state-city";
 
 type WeatherSliceType = {
   weather: WeatherType;
@@ -10,6 +9,7 @@ type WeatherSliceType = {
   error: string;
   loader: boolean;
 };
+
 
 const initialState: WeatherSliceType = {
   weather: {} as WeatherType,
