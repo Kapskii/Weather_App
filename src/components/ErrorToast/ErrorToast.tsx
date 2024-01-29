@@ -1,29 +1,29 @@
 import { Bounce, ToastContainer, toast } from "react-toastify";
-import { useAppSelector } from "../../RTK/store";
+import { useAppDispatch, useAppSelector } from "../../RTK/store";
 import 'react-toastify/dist/ReactToastify.css';
+import { removeError } from "../../RTK/weatherSlice";
 
 
 
 export const ErrorToast = () => {
 
     const error = useAppSelector((state) => state.weatherReducer.error);
-
+    const dispatch = useAppDispatch();
 
     if (error) {
         toast.error(error, {
             position: "bottom-left",
-            autoClose: 5000,
-            hideProgressBar: false,
+            autoClose: 3000,
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
-            progress: undefined,
             theme: "colored",
             transition: Bounce,
             });
-    }
+        dispatch(removeError())
+  }
 
   return (
-    <ToastContainer/>
+    <ToastContainer />
   );
 };
