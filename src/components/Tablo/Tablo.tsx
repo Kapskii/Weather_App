@@ -1,14 +1,13 @@
-import { memo } from "react";
 import s from "./tablo.module.css";
-import { WeatherType } from "../../common/types/types";
+import { useAppSelector } from "../../RTK/store";
 
 
-type PropsType = {
-  weather: WeatherType
-};
+export const Tablo = () => {
 
-export const Tablo = memo((props: PropsType) => {
-    const {city, temp, country} = props.weather;
+    const city = useAppSelector((state)=>state.weatherReducer.weather.city);
+    const temp = useAppSelector((state)=>state.weatherReducer.weather.temp);
+    const country = useAppSelector((state)=>state.weatherReducer.weather.country);
+    
   return (
     <div className={s.tabloWrapper}>
       <h1 className={s.weatherCity}>{city}, {country}</h1>
@@ -17,4 +16,4 @@ export const Tablo = memo((props: PropsType) => {
       </div>
     </div>
   );
-});
+};

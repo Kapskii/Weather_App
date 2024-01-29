@@ -1,14 +1,17 @@
 import { memo } from "react";
 import s from "./weatherInfo.module.css";
-import { WeatherType } from "../../common/types/types";
+import { useAppSelector } from "../../RTK/store";
 
-type PropsType = {
-  weather: WeatherType;
-};
 
-export const WeatherInfo = memo((props: PropsType) => {
-  const { weatherDescription, icon, feelsLike, humidity, minTemp, maxTemp } =
-    props.weather;
+export const WeatherInfo = memo(() => {
+
+    const weatherDescription = useAppSelector((state)=>state.weatherReducer.weather.weatherDescription);
+    const icon = useAppSelector((state)=>state.weatherReducer.weather.icon);
+    const feelsLike = useAppSelector((state)=>state.weatherReducer.weather.feelsLike);
+    const humidity = useAppSelector((state)=>state.weatherReducer.weather.humidity);
+    const minTemp = useAppSelector((state)=>state.weatherReducer.weather.minTemp);
+    const maxTemp = useAppSelector((state)=>state.weatherReducer.weather.maxTemp);
+
 
   return (
     <div className={s.weatherInfo}>
