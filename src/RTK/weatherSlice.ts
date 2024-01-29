@@ -10,7 +10,6 @@ type WeatherSliceType = {
   loader: boolean;
 };
 
-
 const initialState: WeatherSliceType = {
   weather: {} as WeatherType,
   city: "Минск",
@@ -34,8 +33,8 @@ export const weatherSlice = createSlice({
       state.city = action.payload;
     },
     removeError(state) {
-        state.error = '';
-    }
+      state.error = "";
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchWeather.fulfilled, (state, action) => {
@@ -65,4 +64,4 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { setCity,removeError } = weatherSlice.actions;
+export const { setCity, removeError } = weatherSlice.actions;

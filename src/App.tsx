@@ -8,7 +8,6 @@ import { fetchWeather, setCity } from "./RTK/weatherSlice";
 import { ErrorToast } from "./components/ErrorToast/ErrorToast";
 import { Loader } from "./components/Loader/LoaderComp";
 
-
 export const App = () => {
   const city = useAppSelector((state) => state.weatherReducer.city);
   const loader = useAppSelector((state) => state.weatherReducer.loader);
